@@ -110,7 +110,7 @@ public class MyArray {
 		// MyArray myArray2 = new MyArray(arrInit2);
 		// System.out.println(Arrays.toString(myArray2.getMissingValues()));
 
-		int arrInit3[] = { -1, 2, 3, -1, -1, 7, 9, 10, 1, -1 };
+		int arrInit3[] = { -1, 2, 3, -1, -1, 7, 9, 10, -1, 10 };
 		MyArray myArray3 = new MyArray(arrInit3);
 		System.out.println(Arrays.toString(myArray3.fillMissingValues(4)));
 
