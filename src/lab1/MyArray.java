@@ -71,6 +71,9 @@ public class MyArray {
 	}
 
 	public int[] fillMissingValues(int k) {
+		if (k >= this.array.length) {
+			return null;
+		}
 		int res[] = new int[this.array.length];
 		int front = k / 2;
 		int back = k - front;
@@ -79,6 +82,10 @@ public class MyArray {
 				int sum = 0;
 				if (i - front < 0) {
 					for (int j = 0; j <= k; j++) {
+						sum += this.array[j];
+					}
+				} else if (i + back >= this.array.length) {
+					for (int j = this.array.length - k - 1; j < this.array.length; j++) {
 						sum += this.array[j];
 					}
 				} else {
@@ -95,17 +102,17 @@ public class MyArray {
 	}
 
 	public static void main(String[] args) {
-		int arrInit[] = { 1, 2, 3, 5, 6, 7, 9, 10, 10, 9, 9, 7, 3 };
-		MyArray myArray = new MyArray(arrInit);
-		System.out.println(Arrays.toString(myArray.mirror()));
-		System.out.println(Arrays.toString(myArray.removeDuplicates()));
-		int arrInit2[] = { 1, 2, 3, 5, 7, 9, 10 };
-		MyArray myArray2 = new MyArray(arrInit2);
-		System.out.println(Arrays.toString(myArray2.getMissingValues()));
+		// int arrInit[] = { 1, 2, 3, 5, 6, 7, 9, 10, 10, 9, 9, 7, 3 };
+		// MyArray myArray = new MyArray(arrInit);
+		// System.out.println(Arrays.toString(myArray.mirror()));
+		// System.out.println(Arrays.toString(myArray.removeDuplicates()));
+		// int arrInit2[] = { 1, 2, 3, 5, 7, 9, 10 };
+		// MyArray myArray2 = new MyArray(arrInit2);
+		// System.out.println(Arrays.toString(myArray2.getMissingValues()));
 
-		int arrInit3[] = { 1, 2, 3, -1, -1, 7, 9, 10, 1 };
+		int arrInit3[] = { -1, 2, 3, -1, -1, 7, 9, 10, 1, -1 };
 		MyArray myArray3 = new MyArray(arrInit3);
-		System.out.println(Arrays.toString(myArray3.fillMissingValues(2)));
+		System.out.println(Arrays.toString(myArray3.fillMissingValues(4)));
 
 	}
 
