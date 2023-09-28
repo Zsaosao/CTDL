@@ -102,13 +102,13 @@ public class MyArray {
 	}
 
 	public static void main(String[] args) {
-		// int arrInit[] = { 1, 2, 3, 5, 6, 7, 9, 10, 10, 9, 9, 7, 3 };
-		// MyArray myArray = new MyArray(arrInit);
-		// System.out.println(Arrays.toString(myArray.mirror()));
-		// System.out.println(Arrays.toString(myArray.removeDuplicates()));
-		// int arrInit2[] = { 1, 2, 3, 5, 7, 9, 10 };
-		// MyArray myArray2 = new MyArray(arrInit2);
-		// System.out.println(Arrays.toString(myArray2.getMissingValues()));
+		int arrInit[] = { 1, 2, 3, 5, 6, 7, 9, 10, 10, 9, 9, 7, 3 };
+		MyArray myArray = new MyArray(arrInit);
+		System.out.println(Arrays.toString(myArray.mirror()));
+		System.out.println(Arrays.toString(myArray.removeDuplicates()));
+		int arrInit2[] = { 1, 2, 3, 5, 7, 9, 10 };
+		MyArray myArray2 = new MyArray(arrInit2);
+		System.out.println(Arrays.toString(myArray2.getMissingValues()));
 
 		int arrInit3[] = { -1, 2, 3, -1, -1, 7, 9, 10, -1, 10 };
 		MyArray myArray3 = new MyArray(arrInit3);
