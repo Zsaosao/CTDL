@@ -43,4 +43,8 @@ public class OrderItem implements Comparable<OrderItem> {
 	public String toString() {
 		return "OrderItem [p=" + p + ", quality=" + quality + "]";
 	}
+
+	public boolean equalsProduct(Product o) {
+		return this.p.equals(o);
+	}
 }

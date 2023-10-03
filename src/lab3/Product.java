@@ -55,6 +55,10 @@ public class Product implements Comparable<Product> {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", type=" + type + "]";
 	}
 
+	public boolean equals(Product p) {
+		return this.id.equals(p.id) && this.name.equals(p.name) && this.price == p.price && this.type.equals(p.type);
+	}
+
 	@Override
 	public int compareTo(Product o) {
 		int res = this.name.compareTo(o.name);

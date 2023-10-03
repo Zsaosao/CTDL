@@ -28,7 +28,7 @@ public class Order {
 
 		while (right >= left) {
 			int mid = (left + right) / 2;
-			if (this.items[mid].getP() == p) {
+			if (this.items[mid].equalsProduct(p)) {
 				return true;
 			} else if (this.items[mid].getPriceOfProduct() < p.getPrice()) {
 				left = mid + 1;

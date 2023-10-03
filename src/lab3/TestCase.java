@@ -25,7 +25,7 @@ public class TestCase {
 		System.out.println(order.contains(pro5));
 
 		System.out.println(Arrays.toString(order.getItems()));
-
+		System.out.println("--------------");
 		System.out.println(Arrays.toString(order.filter("pro2")));
 	}
 }
