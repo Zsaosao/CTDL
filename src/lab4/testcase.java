@@ -6,17 +6,17 @@ import lab3.Order;
 import lab3.OrderItem;
 import lab3.Product;
 
-public class testcase {
+public class Testcase {
 	public static void main(String[] args) {
 
 		int array1[] = { 4, 5, 1, 2, 0, 9, 9, 10, 3 };
-		sortingAlgorithms.selectionSort(array1);
+		SortingAlgorithms.selectionSort(array1);
 		System.out.println(Arrays.toString(array1));
 		int array2[] = { 4, 5, 1, 2, 0, 9, 9, 10, 3 };
-		sortingAlgorithms.bubbleSort(array2);
+		SortingAlgorithms.bubbleSort(array2);
 		System.out.println(Arrays.toString(array2));
 		int array3[] = { 4, 5, 1, 2, 0, 9, 9, 10, 3 };
-		sortingAlgorithms.insertionSort(array3);
+		SortingAlgorithms.insertionSort(array3);
 		System.out.println(Arrays.toString(array3));
 
 		OrderItem orderItem[] = new OrderItem[4];
@@ -37,11 +37,11 @@ public class testcase {
 		System.out.println(Arrays.toString(order.getItems()));
 
 		int array4[] = { 4, 5, 1, 2, 0, 9, 9, 10, 3 };
-		sortingAlgorithms.mergeSort(array4);
+		SortingAlgorithms.mergeSort(array4);
 		System.out.println(Arrays.toString(array4));
 
 		int array5[] = { 6, 4, 5, 1, 2, 0, 9, 9, 10, 3 };
-		sortingAlgorithms.quickSort(array5);
+		SortingAlgorithms.quickSort(array5);
 		System.out.println(Arrays.toString(array5));
 	}
 }
