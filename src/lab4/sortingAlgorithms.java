@@ -1,7 +1,5 @@
 package lab4;
 
-import java.util.Arrays;
-
 public class SortingAlgorithms {
 	public static void selectionSort(int[] array) {
 		for (int i = 0; i < array.length; i++) {
