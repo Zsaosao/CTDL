@@ -1,4 +1,4 @@
-package lab7;
+package lab_extra_arraylist;
 
 import java.io.IOException;
 

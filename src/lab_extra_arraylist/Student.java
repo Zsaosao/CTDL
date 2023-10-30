@@ -1,4 +1,4 @@
-package lab7;
+package lab_extra_arraylist;
 
 public class Student {
 	private String id;
