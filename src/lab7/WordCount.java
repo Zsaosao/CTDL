@@ -18,9 +18,8 @@ public class WordCount {
 		return result;
 	}
 
-	@Override
+	// @Override
 	public boolean equals(Object obj) {
-		System.out.println("called.");
 		if (obj == null || obj.getClass() != getClass())
 			return false;
 		else {

@@ -3,16 +3,14 @@ package lab7;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class MyWordCount {
 	// public static final String fileName = "src/asset/hamlet.txt";
-	public static final String fileName = "src/asset/hamlet.txt";
+	public static final String fileName = "src/asset/fit.txt";
 
 	private List<String> words = new ArrayList<>();
 
@@ -24,23 +22,29 @@ public class MyWordCount {
 		}
 	}
 
+	public int countWord(String word) {
+		int count = 0;
+		for (int i = 0; i < this.words.size(); i++) {
+			if (this.words.get(i).equals(word)) {
+				count++;
+			}
+		}
+		return count;
+	}
+
 	// Returns a set of WordCount objects that represents the number of times
 	// each unique token appears in the file
 	// data/hamlet.txt (or fit.txt)
 	// In this method, we do not consider the order of tokens
 	public List<WordCount> getWordCounts() {
 		List<WordCount> result = new ArrayList<WordCount>();
-		Map<String, Integer> map = new HashMap<String, Integer>();
 		for (String word : words) {
-			if (map.containsKey(word)) {
-				map.put(word, map.get(word) + 1);
-			} else {
-				map.put(word, 1);
+			WordCount wc = new WordCount(word, countWord(word));
+			if (!result.contains(wc)) {
+				result.add(wc);
 			}
 		}
-		for (String key : map.keySet()) {
-			result.add(new WordCount(key, map.get(key)));
-		}
+
 		return result;
 
 	}
@@ -49,18 +53,9 @@ public class MyWordCount {
 	// words
 	public Set<String> getUniqueWords() {
 		Set<String> result = new HashSet<String>();
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		for (String word : words) {
-			if (map.containsKey(word)) {
-				map.put(word, map.get(word) + 1);
-			} else {
-				map.put(word, 1);
-			}
-		}
-		result = new HashSet<String>();
-		for (String key : map.keySet()) {
-			if (map.get(key) == 1) {
-				result.add(key);
+		for (int i = 0; i < this.getWordCounts().size(); i++) {
+			if (this.getWordCounts().get(i).getCount() == 1) {
+				result.add(this.getWordCounts().get(i).getWord());
 			}
 		}
 		return result;
@@ -70,18 +65,9 @@ public class MyWordCount {
 	// result
 	public Set<String> getDistinctWords() {
 		Set<String> result = new HashSet<String>();
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		for (String word : words) {
-			if (map.containsKey(word)) {
-				map.put(word, map.get(word) + 1);
-			} else {
-				map.put(word, 1);
-			}
-		}
-		result = new HashSet<String>();
-		for (String key : map.keySet()) {
-			if (map.get(key) == 2) {
-				result.add(key);
+		for (int i = 0; i < this.getWordCounts().size(); i++) {
+			if (this.getWordCounts().get(i).getCount() == 2) {
+				result.add(this.getWordCounts().get(i).getWord());
 			}
 		}
 		return result;
@@ -94,20 +80,18 @@ public class MyWordCount {
 		Set<WordCount> result = new TreeSet<WordCount>(new Comparator<WordCount>() {
 			@Override
 			public int compare(WordCount wc1, WordCount wc2) {
-				return wc2.getCount() - wc1.getCount();
+				if (wc1.getCount() - wc2.getCount() == 0) {
+					return wc1.getWord().compareToIgnoreCase(wc2.getWord());
+				}
+				return wc1.getCount() - wc2.getCount();
 			}
 		});
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		for (String word : words) {
-			if (map.containsKey(word)) {
-				map.put(word, map.get(word) + 1);
-			} else {
-				map.put(word, 1);
-			}
-		}
 
-		for (String key : map.keySet()) {
-			result.add(new WordCount(key, map.get(key)));
+		for (String word : words) {
+			WordCount wc = new WordCount(word, countWord(word));
+			if (!result.contains(wc)) {
+				result.add(wc);
+			}
 		}
 
 		return result;
@@ -120,20 +104,18 @@ public class MyWordCount {
 		Set<WordCount> result = new TreeSet<WordCount>(new Comparator<WordCount>() {
 			@Override
 			public int compare(WordCount wc1, WordCount wc2) {
+				if (wc1.getCount() - wc2.getCount() == 0) {
+					return wc2.getWord().compareToIgnoreCase(wc1.getWord());
+				}
 				return wc2.getCount() - wc1.getCount();
 			}
 		});
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		for (String word : words) {
-			if (map.containsKey(word)) {
-				map.put(word, map.get(word) + 1);
-			} else {
-				map.put(word, 1);
-			}
-		}
 
-		for (String key : map.keySet()) {
-			result.add(new WordCount(key, map.get(key)));
+		for (String word : words) {
+			WordCount wc = new WordCount(word, countWord(word));
+			if (!result.contains(wc)) {
+				result.add(wc);
+			}
 		}
 
 		return result;
@@ -153,8 +135,9 @@ public class MyWordCount {
 
 	public static void main(String[] args) {
 		MyWordCount wordCount = new MyWordCount();
-		for (WordCount word : wordCount.getWordCounts()) {
-			System.out.println(word);
+		List<WordCount> wc = wordCount.getWordCounts();
+		for (int i = 0; i < wc.size(); i++) {
+			System.out.println(wc.get(i));
 		}
 		System.out.println("--------------------------------------");
 		for (String word : wordCount.getUniqueWords()) {
